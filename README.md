@@ -16,7 +16,7 @@ The dataset was downloaded from GtHub at [**TRAP**](https://github.com/ChloeHJ/T
 # Model at Hugging Face
 [https://github.com/pengsihua2023/MHC-II-EpiPred](https://huggingface.co/sihuapeng/MHC-II-EpiPred)   
 
-# How to use **MHC-I-EpiPred**
+# How to use **MHC-II-EpiPred**
 ### An example
 Pytorch and transformers libraries should be installed in your system.  
 ### Install pytorch
