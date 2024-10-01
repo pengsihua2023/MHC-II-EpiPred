@@ -3,7 +3,7 @@
 
 **MHC-II-EpiPred** is a regression model for predicting the Immunogenicity score using a potential epitope peptide as an input. 
 
-**MHC-I-EpiPred-ESM2** achieved the following results:  
+**MHC-II-EpiPred** achieved the following results:  
 Everage Train Loss （mse）: 0.0547  
 Everage Validation Loss (mse): 0.0535  
 Epoch: 3 
