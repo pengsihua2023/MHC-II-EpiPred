@@ -1,7 +1,7 @@
 # Model description
-**MHC-II-EpiPred** (MHC-I-EpiPred, MHC I molecular epitope prediction) is a protein language model fine-tuned from [**ESM2**](https://github.com/facebookresearch/esm) pretrained model [(***facebook/esm2_t33_650M_UR50D***)](https://huggingface.co/facebook/esm2_t33_650M_UR50D) on a T cell epitope with Immunogenicity score dataset.    
+**MHC-II-EpiPred** (MHC-I-EpiPred, MHC I molecular epitope prediction) is a protein language model fine-tuned from [**ESM2**](https://github.com/facebookresearch/esm) pretrained model [(***facebook/esm2_t33_650M_UR50D***)](https://huggingface.co/facebook/esm2_t33_650M_UR50D) on a T cell epitope of MHC-II.    
 
-**MHC-II-EpiPred** is a regression model for predicting the Immunogenicity score using a potential epitope peptide as an input. 
+**MHC-II-EpiPred** is a classification model for predicting the class T cell epitope of MHC-II using a potential epitope peptide as an input. 
 
 **MHC-II-EpiPred** achieved the following results:  
 Everage Train Loss （mse）: 0.0547  
