@@ -15,7 +15,7 @@ The original data we obtained comes from the data in the paper by [Lee CH et al.
 The dataset was downloaded from GtHub at [**TRAP**](https://github.com/ChloeHJ/TRAP/blob/main/data/pathogenic_db.csv). 
 
 # Model at Hugging Face
-[https://github.com/pengsihua2023/MHC-II-EpiPred](https://huggingface.co/sihuapeng/MHC-II-EpiPred)   
+https://huggingface.co/sihuapeng/MHC-II-TCEpiPred   
 
 # How to use **MHC-II-EpiPred**
 ### An example
