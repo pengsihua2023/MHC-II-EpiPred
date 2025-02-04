@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHC Class II T Cell Epitope Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        textarea {
+            width: 40%;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .input-group > * {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #positiveResults {
+            margin-top: 20px;
+            color: green;
+            font-weight: bold;
+        }
+        #positiveEpitopeBox {
+            width: 40%;
+            height: 150px;
+            margin-top: 10px;
+        }
+        #positiveEpitopeTitle {
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+            margin-top: 20px;
+        }
+        #clearPositiveResults {
+            margin-right: 20px; 
+        }
+        #sequenceLengthDisplay {
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        nav {
+            background-color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+        }
+        nav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+        nav a:hover {
+            background-color: #d3d3d3;
+        }
+        nav a.logo-link img {
+            display: block;
+        }
+        nav a.logo-link:hover {
+            background-color: transparent; /* Ensures no background change on hover */
+        }
+        span.example-link {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="https://vet.uga.edu/" class="logo-link">
+                <img src="static/log.png" width="220" height="76" alt="UGA Public Health Logo">
+            </a>
+            <a href="/">Submit</a>
+            <a href="/Instructions.html">Instructions</a>
+            <a href="/Data.html">Data</a>
+            <a href="/Abstract.html">Abstract</a>
+            <a href="/Source_code.html">Source Code</a>
+            <a href="/Versions.html">Versions</a>
+            <a href="/Downloads.html">Downloads</a>
+        </div>
+    </nav>
+
+    <h1>MHC Class II T Cell Epitope Prediction</h1>
+    <h2>Data </h2>
+    <center>  
+        <table>
+            <tr>
+                <td>Here we introduce information such as data sources and download addresses for model training.</td>
+            </tr>
+        </table>
+    </center>
+
+    <form id="predictionForm"></form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('predictionForm').addEventListener('submit', async function(event) {
+                event.preventDefault();
+                // Further form handling code...
+            });
+
+            // Additional event listeners...
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHC Class II T Cell Epitope Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        textarea {
+            width: 40%;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .input-group > * {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #positiveResults {
+            margin-top: 20px;
+            color: green;
+            font-weight: bold;
+        }
+        #positiveEpitopeBox {
+            width: 40%;
+            height: 150px;
+            margin-top: 10px;
+        }
+        #positiveEpitopeTitle {
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+            margin-top: 20px;
+        }
+        #clearPositiveResults {
+            margin-right: 20px; 
+        }
+        #sequenceLengthDisplay {
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        nav {
+            background-color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+        }
+        nav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+        nav a:hover {
+            background-color: #d3d3d3;
+        }
+        nav a.logo-link img {
+            display: block;
+        }
+        nav a.logo-link:hover {
+            background-color: transparent; /* Ensures no background change on hover */
+        }
+        span.example-link {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="https://vet.uga.edu/" class="logo-link">
+                <img src="static/log.png" width="220" height="76" alt="UGA Public Health Logo">
+            </a>
+            <a href="/">Submit</a>
+            <a href="/Instructions.html">Instructions</a>
+            <a href="/Data.html">Data</a>
+            <a href="/Abstract.html">Abstract</a>
+            <a href="/Source_code.html">Source Code</a>
+            <a href="/Versions.html">Versions</a>
+            <a href="/Downloads.html">Downloads</a>
+        </div>
+    </nav>
+
+    <h1>MHC Class II T Cell Epitope Prediction</h1>
+    <form id="predictionForm">
+        <label for="sequenceInput">Enter Amino Acid Sequence (<span class="example-link" id="exampleLink">Click here for an example</span>):</label><br><br>
+        <textarea id="sequenceInput" placeholder="Enter your amino acid sequence here..."></textarea><br><br>
+
+        <div class="input-group">
+            <button type="button" id="checkSequenceLength">Check Sequence Length</button>
+            <button type="button" id="clearSequenceInput">Clear Input</button>
+            <label for="windowSize">Window Size</label>
+            <select id="windowSize">
+                <!-- Options for window size -->
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>                                  
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </div>
+
+        <span id="sequenceLengthDisplay"></span><br><br>
+    </form>
+        <div id="positiveEpitopeTitle"></div>
+    <textarea id="positiveEpitopeBox" readonly placeholder="Positive Epitope Sequences will appear here..."></textarea><br>
+    <button type="button" id="clearPositiveResults">Clear Results</button>
+    <button type="button" id="saveResults">Save Results</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const exampleSequence = "MENIVLLLAIVSLVKSDQICIGYHANNSTEQVDTIMEKNVTVTHAQDILEKTHNGKLCDLNGVKPLILKDCSVAGWLLGNPMCDEFIRVPEWSYIVERANPANDLCYPGSLNDYEELKHMLSRINHFEKIQIIPKSSWPNHETSLGVSAACPYQGAPSFFRNVVWLIKKNDAYPTIKISYNNTNREDLLILWGIHHSNNAEEQTNLYKNPITYISVGTSTLNQRLAPKIATRSQVNGQRGRMDFFWTILKPDDAIHFESNGNFIAP";
+
+        // Handle example link click to populate the sequence input
+        document.getElementById('exampleLink').addEventListener('click', function() {
+            document.getElementById('sequenceInput').value = exampleSequence;
+        });
+
+        document.getElementById('checkSequenceLength').addEventListener('click', function () {
+            const sequence = document.getElementById('sequenceInput').value.trim();
+            const length = sequence.length;
+            document.getElementById('sequenceLengthDisplay').textContent = 'Sequence Length: ' + length;
+        });
+
+        document.getElementById('predictionForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const sequence = document.getElementById('sequenceInput').value.trim();
+            const windowSize = parseInt(document.getElementById('windowSize').value);
+            if (!sequence || sequence.length < windowSize) {
+                alert("Please enter a valid sequence that is longer than or equal to the window size.");
+                return;
+            }
+
+            // Displaying the loading message
+            const positiveTitle = document.getElementById('positiveEpitopeTitle');
+            positiveTitle.textContent = "The model is inferring, please wait!";
+            
+            try {
+                const response = await fetch('/predict-epitope-II', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ sequence: sequence, windowSize: windowSize }),
+                });
+
+                if (response.ok) {
+                    const results = await response.json();
+                    displayResults(results);
+                } else {
+                    alert("Prediction failed, please check the input and try again.");
+                }
+            } catch (error) {
+                alert("An error occurred during the prediction process.");
+                console.error("Error:", error);
+            }
+        });
+
+        function displayResults(results) {
+            const positiveResultsTextarea = document.getElementById('positiveEpitopeBox');
+            const positiveTitle = document.getElementById('positiveEpitopeTitle');
+            positiveResultsTextarea.value = "";
+
+            // 按概率值从大到小排序
+            results.sort((a, b) => b.probability - a.probability);
+
+            let positiveSequences = [];
+            results.forEach(result => {
+                // 显示氨基酸序列片段、起始位置、终止位置和概率
+                if (result.prediction === 'Epitope') {
+                    positiveSequences.push(
+                        result.sequence + ', Start: ' + result.start + ', End: ' + result.end + 
+                        ', Probability: ' + (result.probability * 100).toFixed(2) + '%'  // 显示概率值
+                    );
+                }
+            });
+
+            if (positiveSequences.length > 0) {
+                positiveTitle.textContent = "Potential Epitopes:";
+                positiveResultsTextarea.value = positiveSequences.join("\n");
+            } else {
+                positiveTitle.textContent = "No potential epitope is found.";
+            }
+        }
+
+        document.getElementById('clearSequenceInput').addEventListener('click', function() {
+            document.getElementById('sequenceInput').value = '';
+            document.getElementById('sequenceLengthDisplay').textContent = ''; // Clear length display when input is cleared
+        });
+
+        document.getElementById('clearPositiveResults').addEventListener('click', function() {
+            document.getElementById('positiveEpitopeBox').value = '';
+            document.getElementById('positiveEpitopeTitle').textContent = '';
+        });
+
+        document.getElementById('saveResults').addEventListener('click', function() {
+            const originalSequence = document.getElementById('sequenceInput').value.trim();
+            const windowSize = document.getElementById('windowSize').value;
+            const results = document.getElementById('positiveEpitopeBox').value;
+            const sequenceLength = originalSequence.length;  // 获取序列长度
+            const potentialEpitopeNumber = results.split('\n').length;  // 获取表位的数量
+            
+            if (!results) {
+                alert('No results to save.');
+                return;
+            }
+            
+            // 生成保存内容
+            const content = [
+                `Original Sequence: ${originalSequence}`,
+                `Sequence length: ${sequenceLength}; Window Size: ${windowSize}; Potential Epitope number: ${potentialEpitopeNumber}`,
+                "Epitope, Start position, End position, Probability",
+                results
+            ].join("\n");
+
+            // 创建Blob并保存文件
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `Results_${windowSize}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        });
+    });
+</script>
+
+
+
+    <center>
+    </center>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Existing JavaScript for functionality
+        });
+      </script>
+</body>
+</html>
