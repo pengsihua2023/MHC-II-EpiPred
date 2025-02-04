@@ -1,7 +1,7 @@
 # Model description
 **MHC-II-EpiPred** (MHC-II-EpiPred, T cell MHC II molecular epitope prediction) is a protein language model fine-tuned from [**ESM2**](https://github.com/facebookresearch/esm) pretrained model [(***facebook/esm2_t33_650M_UR50D***)](https://huggingface.co/facebook/esm2_t33_650M_UR50D).    
 
-**MHC-II-EpiPred** is a classification model for predicting the class of T cell epitope of MHC-II using a potential epitope peptide as an input. 
+**MHC-II-EpiPred** is a classification model that uses potential epitope peptides as input to predict T cell epitopes of MHC-II. The model is fed with a peptide sequence, and the output of the model is whether the peptide is a T cell epitope of MHC-II.  
 
 **MHC-II-EpiPred** achieved the following results:  
 Training Loss (mse): 0.1407   
