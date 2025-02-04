@@ -14,7 +14,7 @@ The original data we obtained comes from the data in the paper by [Lee CH et al.
 
 The original data was downloaded from IEDB data base at https://www.iedb.org/home_v3.php.  
 
-The dataset was downloaded from GtHub at [**TRAP**](https://github.com/ChloeHJ/TRAP/blob/main/data/pathogenic_db.csv). 
+Finally, the dataset we used to train the model contains 60,256 positive and negative samples, which is stored in https://github.com/pengsihua2023/MHC-II-EpiPred/tree/main/data.   
 
 # Model at Hugging Face
 https://huggingface.co/sihuapeng/MHC-II-TCEpiPred   
