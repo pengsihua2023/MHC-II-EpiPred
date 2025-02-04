@@ -12,6 +12,8 @@ Epochs: 324
 # The dataset for training **MHC-II-EpiPred**
 The original data we obtained comes from the data in the paper by [Lee CH et al.](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01225-z) The data is in a CSV file with a total of 9 columns with a sample size of 100,097. We used the first column (amino acid sequences), the second column (immunogenicity, positive or negative), and the ninth column (immunogenicity score). We used these three columns as input to fine-tune the ESM2 pre-trained model and built a regression model. Using this regression model, by inputting potential epitope amino acid sequences, we can predict the immunogenicity score of the potential epitope, and then determine whether it is an epitope based on the set threshold.
 
+The original data was downloaded from IEDB data base at https://www.iedb.org/home_v3.php.  
+
 The dataset was downloaded from GtHub at [**TRAP**](https://github.com/ChloeHJ/TRAP/blob/main/data/pathogenic_db.csv). 
 
 # Model at Hugging Face
