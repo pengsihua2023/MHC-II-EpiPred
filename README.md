@@ -4,10 +4,11 @@
 **MHC-II-EpiPred** is a classification model for predicting the class T cell epitope of MHC-II using a potential epitope peptide as an input. 
 
 **MHC-II-EpiPred** achieved the following results:  
-Everage Train Loss （mse）: 0.0547  
-Everage Validation Loss (mse): 0.0535  
-Epoch: 3 
-
+Training Loss (mse): 0.1407  
+Training Accuracy: 0.9898 
+Evaluation Loss (mse): 0.0836  
+Evaluation Accuracy: 0.9703  
+Epochs: 324  
 # The dataset for training **MHC-II-EpiPred**
 The original data we obtained comes from the data in the paper by [Lee CH et al.](https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01225-z) The data is in a CSV file with a total of 9 columns with a sample size of 100,097. We used the first column (amino acid sequences), the second column (immunogenicity, positive or negative), and the ninth column (immunogenicity score). We used these three columns as input to fine-tune the ESM2 pre-trained model and built a regression model. Using this regression model, by inputting potential epitope amino acid sequences, we can predict the immunogenicity score of the potential epitope, and then determine whether it is an epitope based on the set threshold.
 
