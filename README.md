@@ -34,36 +34,7 @@ pip install transformers
 ```
 ### Run the following code
 ```
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch
 
-# Load the fine-tuned model and tokenizer
-model_name = "sihuapeng/PPPSL"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSequenceClassification.from_pretrained(model_name)
-
-# Sample protein sequence
-protein_sequence = "MSKKVLITGGAGYIGSVLTPILLEKGYEVCVIDNLMFDQISLLSCFHNKNFTFINGDAMDENLIRQEVAKADIIIPLAALVGAPLCKRNPKLAKMINYEAVKMISDFASPSQIFIYPNTNSGYGIGEKDAMCTEESPLRPISEYGIDKVHAEQYLLDKGNCVTFRLATVFGISPRMRLDLLVNDFTYRAYRDKFIVLFEEHFRRNYIHVRDVVKGFIHGIENYDKMKGQAYNMGLSSANLTKRQLAETIKKYIPDFYIHSANIGEDPDKRDYLVSNTKLEATGWKPDNTLEDGIKELLRAFKMMKVNRFANFN"
-
-# Encode the sequence as model input
-inputs = tokenizer(protein_sequence, return_tensors="pt")
-
-# Perform inference using the model
-with torch.no_grad():
-    outputs = model(**inputs)
-
-# Get the prediction result
-logits = outputs.logits
-predicted_class_id = torch.argmax(logits, dim=-1).item()
-id2label = {0: 'CYtoplasmicMembrane', 1: 'Cellwall', 2: 'Cytoplasmic', 3: 'Extracellular', 4: 'OuterMembrane', 5: 'Periplasmic'}
-predicted_label = id2label[predicted_class_id]
-
-# Output the predicted class
-print ("===========================================================================================================================================")
-print(f"Predicted class Label: {predicted_label}")
-print ("===========================================================================================================================================")
-
-```
 
 ## Funding
 This project was funded by the CDC to Justin Bahl (BAA 75D301-21-R-71738).  
