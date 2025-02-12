@@ -19,7 +19,9 @@ Evaluation Accuracy: 0.9703
 Epochs: 324  
 
 # Model at Hugging Face
-https://huggingface.co/sihuapeng/MHC-II-TCEpiPred   
+https://huggingface.co/sihuapeng/MHC-II-TCEpiPred 
+# Model deployed
+http://72.167.44.178:8000/  
 
 # How to use **MHC-II-EpiPred**
 ### An example
