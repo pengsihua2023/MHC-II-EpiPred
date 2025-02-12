@@ -3,18 +3,20 @@
 
 **MHC-II-EpiPred** is a classification model that uses potential epitope peptides as input to predict T cell epitopes of MHC-II. The model is fed with a peptide sequence, and the output of the model is whether the peptide is a T cell epitope of MHC-II.  
 
-**MHC-II-EpiPred** achieved the following results:  
-Training Loss (mse): 0.1407   
-Training Accuracy: 0.9898  
-Evaluation Loss (mse): 0.0836    
-Evaluation Accuracy: 0.9703    
-Epochs: 324  
 # The dataset for training **MHC-II-EpiPred**
 The original data was downloaded from IEDB data base at https://www.iedb.org/home_v3.php.  
 The full data can be downloaded at  https://www.iedb.org/downloader.php?file_name=doc/tcell_full_v3.zip  
 This dataset comprises 543,717 T-cell epitope entries, spanning a variety of species and infections caused by diverse viruses. The epitope information included encompasses a broad range of potential sources, including data relevant to disease immunotherapy.  
 
 Finally, the dataset we used to train the model contains 60,256 positive and negative samples, which is stored in https://github.com/pengsihua2023/MHC-II-EpiPred/tree/main/data.   
+
+# Results
+**MHC-II-EpiPred** achieved the following results:  
+Training Loss (mse): 0.1407   
+Training Accuracy: 0.9898  
+Evaluation Loss (mse): 0.0836    
+Evaluation Accuracy: 0.9703    
+Epochs: 324  
 
 # Model at Hugging Face
 https://huggingface.co/sihuapeng/MHC-II-TCEpiPred   
