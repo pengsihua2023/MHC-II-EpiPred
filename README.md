@@ -21,7 +21,8 @@ Epochs: 324
 # Model at Hugging Face
 https://huggingface.co/sihuapeng/MHC-II-TCEpiPred 
 # Model deployed
-http://72.167.44.178:8000/  
+http://72.167.44.178:8000/ 
+The best performance of the fine-tuned model is the 650M parameter model, but such a model cannot be deployed on the 4G memory server I rented. In other words, the hardware for model reasoning does not meet the minimum requirements. So the model deployed this time is a model with only 8M parameters. This small parameter model is deployed for demonstration purposes.  
 
 # How to use **MHC-II-EpiPred**
 ### An example
