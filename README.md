@@ -38,7 +38,7 @@ pip install transformers
 ```
 ### Run the following code
 ```
-To be comming.
+Coming soon!
 
 ```
 
