@@ -18,6 +18,12 @@ Evaluation Loss (mse): 0.0836
 Evaluation Accuracy: 0.9703    
 Epochs: 324  
 
+![image](https://github.com/user-attachments/assets/bee6d75c-919b-4de3-97f4-0b372e1dd898)  
+Figure 2 Training and Evaluation Loss during the training process of the MHC-II-EpiPred model
+
+![image](https://github.com/user-attachments/assets/3df0a0f1-9cdd-431d-9055-127fe0efc3d3)  
+Figure 3 Evaluation accuracy during the training process  
+
 # Model at Hugging Face
 https://huggingface.co/sihuapeng/MHC-II-TCEpiPred 
 # Model deployed
