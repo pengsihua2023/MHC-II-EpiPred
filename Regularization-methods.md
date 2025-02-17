@@ -111,7 +111,7 @@
 *   **调整 Dropout 比例**  
   原来：0.4， 改为：( 0.2 或 0.3) 或者更大的比例 (如 0.5)
 *   **调整 Weight Decay 强度 (并考虑使用 AdamW 优化器)**  
-  原来：0.15， 改为：(0.01 或 0.05) 或者更大的值 (如 0.2 或 0.3
+  原来：0.15， 改为：(0.01 或 0.05) 或者更大的值 (如 0.2 或 0.3）
 *   **在 Custom Classification Head 中添加 Layer Normalization (优先考虑)**
 ```
 class CustomEsmClassificationHead(nn.Module):
