@@ -13,9 +13,10 @@ Finally, the dataset we used to train the model contains 60,256 positive and neg
 # Results
 **MHC-II-EpiPred** achieved the following results:  
 Training Loss (mse): 0.1407   
-Training Accuracy: 0.9898  
+Training Accuracy: 98.98%  
 Evaluation Loss (mse): 0.0836    
-Evaluation Accuracy: 0.9703    
+Evaluation Accuracy: 97.03%   
+Avg. F1 Score: 98.97%
 Epochs: 324  
 Train runtime：20.35 Hours  
 GPUs used: 4 H100 with 80G Memory  
