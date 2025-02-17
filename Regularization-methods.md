@@ -3,8 +3,8 @@
 
 **代码中已有的正则化手段:**
 
-*   **Dropout:**  你在 `CustomEsmClassificationHead` 中使用了 Dropout 层 (`self.dropout1 = nn.Dropout(0.40)`)， dropout 的比例设置为 0.4。 Dropout 是一种常用的正则化技术，可以随机丢弃一部分神经元，减少神经元之间的共适应性，提高模型的鲁棒性和泛化能力。
-*   **Weight Decay:** 在 `TrainingArguments` 中，你设置了 `weight_decay=0.15`。 Weight decay (也称为 L2 正则化)  通过在损失函数中添加模型权重的 L2 范数惩罚项，来限制模型权重的大小，防止模型过度拟合训练数据。
+*   **Dropout:**  你在 `CustomEsmClassificationHead` 中使用了 Dropout 层 (`self.dropout1 = nn.Dropout(0.40)`)， dropout 的比例设置为 0.4。 Dropout 是一种常用的正则化技术，可以随机丢弃一部分神经元，减少神经元之间的共适应性，提高模型的鲁棒性和泛化能力。  
+*   **Weight Decay:** 在 `TrainingArguments` 中，你设置了 `weight_decay=0.15`。 Weight decay (也称为 L2 正则化)  通过在损失函数中添加模型权重的 L2 范数惩罚项，来限制模型权重的大小，防止模型过度拟合训练数据。  
 *   **Early Stopping:** 你使用了 `EarlyStoppingCallback`，并设置了 `early_stopping_patience=50` 和 `early_stopping_threshold=0.0001`。 Early stopping 是一种隐式的正则化方法，它会在验证集性能不再提升时提前停止训练，避免模型在训练集上过拟合。
 *   **LoRA (Low-Rank Adaptation):**  你在 `EsmConfig` 中启用了 LoRA (`config.lora = {"enabled": True, "r": 12, "alpha": 32}`)。 LoRA 是一种参数高效的微调方法，它只训练少量新增的低秩参数，而冻结预训练模型的大部分参数。 LoRA 本身也可以被视为一种正则化手段，因为它限制了模型在微调过程中可以调整的参数数量，减少了过拟合的风险。
 
@@ -12,9 +12,9 @@
 
 你的代码已经应用了多种有效的正则化技术，这是一个很好的起点。  基于你提供的代码和之前的讨论，以下是一些可以进一步尝试的正则化方法和建议，你可以根据你的实际情况和实验结果进行选择：
 
-**1. 调整 Dropout 比例:**
+**1. 调整 Dropout 比例:** 
 
-*   **尝试不同的 Dropout 比例:**  你目前在 `CustomEsmClassificationHead` 中使用了 Dropout 比例 0.4。  可以尝试调整 Dropout 的比例，例如尝试更小的比例 (如 0.2 或 0.3) 或者更大的比例 (如 0.5)。  不同的 Dropout 比例可能会影响模型的泛化能力和训练速度。
+*   **尝试不同的 Dropout 比例:**  你目前在 `CustomEsmClassificationHead` 中使用了 Dropout 比例 0.4。  可以尝试调整 Dropout 的比例，例如尝试更小的比例 (如 0.2 或 0.3) 或者更大的比例 (如 0.5)。  不同的 Dropout 比例可能会影响模型的泛化能力和训练速度。  
 *   **在 ESM-2 模型的主体部分增加 Dropout (谨慎):**  ESM-2 模型本身已经包含了 Dropout 层。  **通常不建议** 在预训练模型的主体部分额外增加 Dropout，因为这可能会破坏预训练模型的知识，并降低模型性能。  **除非你有明确的理由和实验支持，否则不建议在 ESM-2 的 Transformer 层中额外添加 Dropout。**  你目前在自定义分类头中添加 Dropout 是更常见的做法。
 
 **2. 调整 Weight Decay (L2 正则化) 强度:**
