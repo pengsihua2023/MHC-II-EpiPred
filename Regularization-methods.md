@@ -106,14 +106,14 @@
 
 **总结:**
 
-你的训练代码已经应用了 Dropout, Weight Decay, Early Stopping, LoRA 等多种正则化技术。  为了进一步优化模型，你可以尝试：
+你的训练代码已经应用了 Dropout, Weight Decay, Early Stopping, LoRA 等多种正则化技术。  为了进一步优化模型，你可以尝试：  
 
-*   **调整 Dropout 比例**
+*   **调整 Dropout 比例**  
   原来：0.4， 改为：( 0.2 或 0.3) 或者更大的比例 (如 0.5)
-*   **调整 Weight Decay 强度 (并考虑使用 AdamW 优化器)**
+*   **调整 Weight Decay 强度 (并考虑使用 AdamW 优化器)**  
   原来：0.15， 改为：(0.01 或 0.05) 或者更大的值 (如 0.2 或 0.3
-*   **在 Custom Classification Head 中添加 Layer Normalization (优先考虑)** 或 Batch Normalization
-*   **启用 Gradient Clipping (`max_grad_norm`)**
+*   **在 Custom Classification Head 中添加 Layer Normalization (优先考虑)** 或 Batch Normalization  
+*   **启用 Gradient Clipping (`max_grad_norm`)**  
   ```
   args = TrainingArguments(
     # ...,
@@ -122,4 +122,4 @@
 )
 ```
 
-记住，正则化是一个 **实验性的过程**。  没有一种通用的最佳正则化策略，最优的方案通常需要通过 **大量的实验和验证** 来确定。  请根据你的具体任务、数据和模型情况，逐步尝试和调整这些正则化方法，并仔细评估实验结果，找到最适合你的模型的正则化配置。
+记住，正则化是一个 **实验性的过程**。  没有一种通用的最佳正则化策略，最优的方案通常需要通过 **大量的实验和验证** 来确定。  请根据你的具体任务、数据和模型情况，逐步尝试和调整这些正则化方法，并仔细评估实验结果，找到最适合你的模型的正则化配置。  
